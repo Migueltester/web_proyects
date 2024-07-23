@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" >
+    <title>Formulario</title>
+</head>
+<body >
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    <br>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div>
+        <div>
+                <form action="/add_contacto" method="POST" style="display: flex; flex-direction: column; padding: 12px 24px;">
+
+                    <input  type="text"  class="form-input" name="nombre" placeholder="Ingresa tu nombre">
+                    <input type="text" name="apellido" placeholder="Ingresa tu apellido">
+                    <input type="text" name="telefono" placeholder="Ingresa tu telefono">
+                    <input type="text" name="email" placeholder="Ingresa tu correo">
+                    <button type="submit">Submit</button>
+
+                </form>
+            </div>
+            <div>
+                <table>
+                    <th>
+                        <tr>
+                            <td>nombre</td>
+                            <td>Apellido</td>
+                            <td>Telefono</td>
+                            <td>email</td>
+                        </tr>
+                    </th>
+                    <tb>
+                        {% for contact in contactos%}
+                        <tr>
+                            <td>{{contact.1}}</td>
+                            <td>{{contact.2}}</td>
+                            <td>{{contact.3}}</td>
+                            <td>{{contact.4}}</td>
+
+                        </tr> 
+                        {% endfor%}
+                    </tb>
+                </table>
+            </div>
+
+    </div>
+    
+</body>
+</html>
